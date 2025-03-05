@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{user_name}}さんのランキング結果</title>
+        <meta name="description" content="Pixiv SoretrはPixiv作品を作者ごとの人気順に並べ替えるサイトです。">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/ranking_style.css">
+        <link rel="icon" type="image/png" href="/static/css/rogo/favicon.png">
+    </head>
+    <body>
+        <div class="cover cover-home">
+            <header class="page-header">
+                <h1 class="align-center">
+                    <a href="{{url_for('index')}}"><img class="logo" src="../static/css/rogo/rogo.png" alt="Pixiv_Sorter ホーム"></a> 
+                </h1>
+            </header>
+            <h2 class="user-name">{{user_name}}さんの人気イラストランキング</h2>
+        </div>
+        <main class="container">
+            <div class="tab_contents_box">
+                <input id="tab_a" type="radio" name="tab_menu" class="tab_btn" checked >
+                <label class="tab_menu" for="tab_a">一般</label>
+                <input id="tab_b" type="radio" name="tab_menu" class="tab_btn">
+                <label class="tab_menu" for="tab_b">R-18</label>
+                <input id="tab_c" type="radio" name="tab_menu" class="tab_btn">
+                <label class="tab_menu" for="tab_c">総合</label>
+                <div id="tab_a_content" class="tab_content">
+                    <div id="grid_general" class="tab_detail">
+                        {% for item_1 in responsedata_grl %}
+                            <div class="item">
+                                <p class="ranking" id="st_{{loop.index}}">{{ loop.index }}位</p>
+                                <a href="{{ item_1.url }}" target="_blank"><img src="{{ item_1.img }}" alt=""></a>
+                                <p class="illust_name">{{ item_1.name }}</p>
+                                <p class="like_number">いいね数：{{ item_1.likes }}</p>
+                                <a class="illust_url" href="{{ item_1.url }}" target="_blank">イラストを見る</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div id="tab_b_content" class="tab_content">
+                    <div id="grid_R18" class="tab_detail">
+                        {% for item_2 in responsedata_R18 %}
+                            <div class="item">
+                                <p class="ranking" id="st_{{loop.index}}">{{ loop.index }}位</p>
+                                <img src="{{ item_2.img }}" alt="">
+                                <p class="illust_name">{{ item_2.name }}</p>
+                                <p class="like_number">いいね数：{{ item_2.likes }}</p>
+                                <a class="illust_url" href="{{ item_2.url }}" target="_blank">イラストを見る</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div id="tab_c_content" class="tab_content">
+                    <div id="grid_all" class="tab_detail">
+                        {% for item_3 in responsedata_all %}
+                            <div class="item">
+                                <p class="ranking" id="st_{{loop.index}}">{{ loop.index }}位</p>
+                                <img src="{{ item_3.img }}" alt="">
+                                <p class="illust_name">{{ item_3.name }}</p>
+                                <p class="like_number">いいね数：{{ item_3.likes }}</p>
+                                <a class="illust_url" href="{{ item_3.url }}" target="_blank">イラストを見る</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="return">
+                <a class="url" href="{{url_for('index')}}">TOPへ戻る</a>
+            </div>
+        </main>
+        <footer>
+            <div class="copyright">
+                <small>&copy; 2025 Pixiv Sorter</small>
+            </div>
+        </footer>
+    </body>
+</html>
