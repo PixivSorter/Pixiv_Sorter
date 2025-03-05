@@ -69,7 +69,7 @@ def show_contact():
 def make_data(data,kind,url):
     illust_name = [data[i][0] for i in range(len(data))]
     illust_id = [data[i][1] for i in range(len(data))]
-    illust_path = [f'static/img/{url}/{kind}/{i+1}.jpg' for i in range(len(data))]
+    illust_path = [f'/tmp/{url}/{kind}/{i+1}.jpg' for i in range(len(data))]
     illust_url = ['https://www.pixiv.net/artworks/' + str(illust_id[i]) for i in range(len(data))]
     illust_likes = [data[i][2] for i in range(len(data))]
     ranking_data = [{'name': x, 'img': y, 'url': z, 'likes':q} for x,y,z,q in zip(illust_name, illust_path, illust_url, illust_likes)]
