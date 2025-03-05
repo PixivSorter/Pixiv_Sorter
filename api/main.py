@@ -66,7 +66,7 @@ class collectIllustInfo():
         elif content == 2:
             file_name = 'R18'
 
-        thumbnail_file = f'/tmp{self.user_id}/{file_name}/'
+        thumbnail_file = f'./tmp{self.user_id}/{file_name}/'
 
         try:
             os.makedirs(thumbnail_file)
