@@ -1,2 +1,3 @@
 Flask
 requests==2.26.0
+cloudscraper
