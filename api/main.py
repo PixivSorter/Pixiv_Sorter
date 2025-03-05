@@ -65,39 +65,40 @@ class collectIllustInfo():
             file_name = 'general'
         elif content == 2:
             file_name = 'R18'
-
-        thumbnail_file = f'./tmp/{self.user_id}/{file_name}/'
-
+    
+        # /tmp に変更
+        thumbnail_file = f'/tmp/{self.user_id}/{file_name}/'
+    
         try:
-            os.makedirs(thumbnail_file)
+            os.makedirs(thumbnail_file, exist_ok=True)  # exist_ok=True を追加
         except FileExistsError:
-            shutil.rmtree(f'./tmp/{self.user_id}/{file_name}')
-            os.mkdir(thumbnail_file)
-
+            shutil.rmtree(f'/tmp/{self.user_id}/{file_name}')
+            os.makedirs(thumbnail_file, exist_ok=True)
+    
         if len(data) <= 15:
             for_renge = len(data)
         else:
             for_renge = 15
-
+    
         for i in range(for_renge):
             illust_detail = ''
             thumbnail_url = ''
             
             download_id = data[i][1]
-
+    
             illust_detail = self.instance.illust_detail(download_id)
             thumbnail_url = illust_detail['illust']['image_urls']['square_medium']
-
+    
             old_path = self.instance.download(thumbnail_url, thumbnail_file, i)
-            
+    
             temp_path = old_path.split('/')
-            
             temp_path.pop(-1)
             temp_path.append(f'{i+1}.jpg')
-
+    
             new_path = '/'.join(temp_path)
+    
+            os.rename(old_path, new_path)
 
-            os.rename(old_path,new_path)
     
     def get_maker(self, user_id):
         user_info = self.instance.user_detail(user_id)
