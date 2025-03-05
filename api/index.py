@@ -1,3 +1,11 @@
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from main import collectIllustInfo
+
+
 from flask import Flask, render_template, request, session, redirect, url_for
 from main import collectIllustInfo
 from secret import refresh_token, session_key
