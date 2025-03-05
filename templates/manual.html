@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pixiv Sorter</title>
+        <meta name="description" content="あるPixivユーザーの全作品を自動で取得して、「そのユーザーの中での人気作品ランキング」を作成するツールです。いいね数・ブクマ数などを元に、そのユーザーの作品人気トップ15がすぐ分かります。">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/manual_style.css">
+        <link rel="icon" type="image/png" href="/static/css/rogo/favicon.png">
+    </head>
+    <body>
+        <div class="cover cover-home">
+            <header class="page-header">
+                <h1 class="align-center" >
+                    <a href="{{url_for('index')}}"><img class="logo" src="../static/css/rogo/rogo.png" alt="Pixiv_Sorter ホーム"></a> 
+                </h1>
+                <nav>
+                    <ul class="main-nav main-font">
+                        <li><a href="{{url_for('show_manual')}}">使い方</a></li>
+                        <li><a href="{{url_for('show_policy')}}">利用規約</a></li>
+                        <li><a href="{{url_for('show_contact')}}">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+        <main>
+            <h2 class="manual_title">本サイトの使い方</h2>
+            <h3 class="step_title">①作者様のURLをコピー</h3>
+            <div class="step">
+                <p class="explain">最初にランキングを作りたい作者様のULRをコピー。
+                    <br>この時URLの始まりが'https://www.pixiv.net/users/'
+                    <br>であることを確認してください。
+                    <br>※画像はPixiv公式アカウントのURLです。
+                </p>
+                <img class="img_1" src="static\css\rogo\スクリーンショット 2025-03-03 213755.png" alt="step_1_img">
+            </div>
+            <p class="border"></p>
+            <h3 class="step_title">②テキストボックスにURLを貼り付け</h3>
+            <div class="step">
+                <p class="explain">コピーしたURLを貼り付けます。
+                    <br>利用規約を一読後、
+                    <br>並べ替えボタンを押しランキングを作成します。
+                    <br>ランキング作成には数秒かかる場合がございます。
+                </p>
+                <img class="img_1" src="static\css\rogo\スクリーンショット 2025-03-03 211401.png" alt="step_2_img">
+            </div>
+            <div class="return">
+                <a class="url" href="{{url_for('index')}}">TOPへ戻る</a>
+            </div>
+        </main>
+        <div class="copyright">
+            <small>&copy; 2025 Pixiv Sorter</small>
+        </div>
+    </body>
+</html>
