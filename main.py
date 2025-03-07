@@ -80,6 +80,8 @@ class collectIllustInfo():
         else:
             for_renge = 15
 
+        print(\n\n\n\n\n\n\n\n\n\n\n\n\n\n)
+
         for i in range(for_renge):
             illust_detail = ''
             thumbnail_url = ''
