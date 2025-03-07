@@ -93,7 +93,6 @@ class collectIllustInfo():
             temp_path = old_path.split('/')
             
             temp_path.pop(-1)
-            temp_path.pop(0)
             temp_path.append(f'{self.user_id}_{file_name}_{i+1}.jpg')
 
             new_path = '/'.join(temp_path)
