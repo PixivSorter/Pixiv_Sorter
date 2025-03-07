@@ -29,17 +29,17 @@ def make_ranking():
     for i in range(3):
         if i == 0:
             data = show_info.sort_list(0)
-            show_info.download_thumbnail(data, i)
+            #show_info.download_thumbnail(data, i)
             ranking_data_all = make_data(data,'all',url)
         
         elif i == 1:
             data = show_info.sort_list(1)
-            show_info.download_thumbnail(data, i)
+            #show_info.download_thumbnail(data, i)
             ranking_data_grl = make_data(data,'general',url)
 
         elif i == 2:
             data = show_info.sort_list(2)
-            show_info.download_thumbnail(data, i)
+            #show_info.download_thumbnail(data, i)
             ranking_data_R18 = make_data(data,'R18',url)
 
     user_name = make_name(url)
