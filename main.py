@@ -66,13 +66,13 @@ class collectIllustInfo():
         elif content == 2:
             file_name = 'R18'
 
-        thumbnail_file = f'/tmp/'#{self.user_id}/{file_name}/'
+        thumbnail_file = f'/tmp/'
 
-        try:
+        '''try:
             os.makedirs(thumbnail_file)
         except FileExistsError:
             shutil.rmtree(f'/tmp/{self.user_id}/{file_name}')
-            os.mkdir(thumbnail_file)
+            os.mkdir(thumbnail_file)'''
 
         if len(data) <= 15:
             for_renge = len(data)
@@ -93,7 +93,7 @@ class collectIllustInfo():
             temp_path = old_path.split('/')
             
             temp_path.pop(-1)
-            temp_path.append(f'{self.user_id}_{self.file_name}_{i+1}.jpg')
+            temp_path.append(f'{self.user_id}_{file_name}_{i+1}.jpg')
 
             new_path = '/'.join(temp_path)
 
