@@ -20,6 +20,12 @@ def index():
 def serve_thumbnail(filename):
     return send_from_directory('/tmp', filename)
 
+@app.route('/debug/tmp')
+def debug_tmp():
+    files = os.listdir('/tmp')
+    img_tags = [f'<img src="/tmp/{f}" style="width:100px;">' for f in files if f.endswith('.jpg')]
+    return '<br>'.join(img_tags)
+
 @app.route('/ranking')
 def make_ranking():
     url = session.get('url')[28:]
