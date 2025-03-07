@@ -58,7 +58,7 @@ class collectIllustInfo():
         elif content == 2:
             return illust_all_data_R18
 
-    def download_thumbnail(self, data, content):
+    '''def download_thumbnail(self, data, content):
         if content == 0:
             file_name = 'all'
         elif content == 1:
@@ -97,7 +97,29 @@ class collectIllustInfo():
 
             new_path = '/'.join(temp_path)
 
-            os.rename(old_path,new_path)
+            os.rename(old_path,new_path)'''
+    def download_thumbnail(self, data, content):
+        if content == 0:
+            file_name = 'all'
+        elif content == 1:
+            file_name = 'general'
+        elif content == 2:
+            file_name = 'R18'
+    
+        if len(data) <= 15:
+            for_range = len(data)
+        else:
+            for_range = 15
+    
+        for i in range(for_range):
+            download_id = data[i][1]
+    
+            illust_detail = self.instance.illust_detail(download_id)
+            thumbnail_url = illust_detail['illust']['image_urls']['square_medium']
+    
+            save_path = f'/tmp/{self.user_id}_{file_name}_{i+1}.jpg'
+            self.instance.download(thumbnail_url, save_path)
+
     
     def get_maker(self, user_id):
         user_info = self.instance.user_detail(user_id)
