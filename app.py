@@ -16,6 +16,10 @@ def index():
             return redirect(url_for('make_ranking'))
     return render_template('index.html')
 
+@app.route('/tmp/<path:filename>')
+def serve_thumbnail(filename):
+    return send_from_directory('/tmp', filename)
+
 @app.route('/ranking')
 def make_ranking():
     url = session.get('url')[28:]
