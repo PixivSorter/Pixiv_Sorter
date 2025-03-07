@@ -90,17 +90,9 @@ class collectIllustInfo():
             thumbnail_url = illust_detail['illust']['image_urls']['square_medium']
 
             old_path = self.instance.download(thumbnail_url, thumbnail_file, i)
-            print('file_path = ' + old_path)
             
-            temp_path = old_path.split('/')
-            
-            temp_path.pop(-1)
-            temp_path.append(f'{self.user_id}_{file_name}_{i+1}.jpg')
-
-            new_path = '/'.join(temp_path)
-
-            os.rename(old_path,new_path)
-
+            new_path = f'/tmp/{self.user_id}_{file_name}_{i+1}.jpg'
+            os.rename(old_path, new_path)
     
     def get_maker(self, user_id):
         user_info = self.instance.user_detail(user_id)
