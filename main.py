@@ -80,7 +80,7 @@ class collectIllustInfo():
         else:
             for_renge = 15
 
-        print(\n\n\n\n\n\n\n\n\n\n\n\n\n\n)
+        print('done')
 
         for i in range(for_renge):
             illust_detail = ''
