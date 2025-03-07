@@ -71,8 +71,9 @@ class collectIllustInfo():
         try:
             os.makedirs(thumbnail_file)
         except FileExistsError:
-            shutil.rmtree(f'/tmp/{self.user_id}/{file_name}')
-            os.mkdir(thumbnail_file)
+            print('filed make file')
+            #shutil.rmtree(f'/tmp/')
+            #os.mkdir(thumbnail_file)
 
         if len(data) <= 15:
             for_renge = len(data)
@@ -89,6 +90,7 @@ class collectIllustInfo():
             thumbnail_url = illust_detail['illust']['image_urls']['square_medium']
 
             old_path = self.instance.download(thumbnail_url, thumbnail_file, i)
+            print('file_path = ' + old_path)
             
             temp_path = old_path.split('/')
             
