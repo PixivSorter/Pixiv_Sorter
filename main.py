@@ -68,11 +68,11 @@ class collectIllustInfo():
 
         thumbnail_file = f'/tmp/'
 
-        '''try:
+        try:
             os.makedirs(thumbnail_file)
         except FileExistsError:
             shutil.rmtree(f'/tmp/{self.user_id}/{file_name}')
-            os.mkdir(thumbnail_file)'''
+            os.mkdir(thumbnail_file)
 
         if len(data) <= 15:
             for_renge = len(data)
